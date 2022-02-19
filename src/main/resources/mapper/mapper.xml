@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.simplecrud_member.mapper.IMemberMapper">
+
+    <!--사용자 정보 조회-->
+    <select id="getMemberProfile" parameterType="Integer" resultType="com.example.simplecrud_member.model.member.shared.MemberProfile">
+        SELECT
+            MemberId,
+            Name
+        FROM
+            Member
+        WHERE
+            MemberId = ${memberId}
+    </select>
+
+    <!--사용자 정보 조회-->
+    <select id="getMemberProfiles" parameterType="java.util.List" resultType="com.example.simplecrud_member.model.member.shared.MemberProfile">
+        SELECT
+            MemberId,
+            Name
+        FROM
+            Member
+        WHERE
+            MemberId IN
+            <foreach collection="memberIds" item="memberId" index="index" open="(" close=")" separator=",">
+                #{memberId}
+            </foreach>
+    </select>
+
+</mapper>
