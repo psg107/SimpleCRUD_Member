@@ -8,5 +8,9 @@ public class GetMemberProfileResponse {
 
     @Getter
     @Setter
-    private MemberProfile memberProfile;
+    private int memberId;
+
+    @Getter
+    @Setter
+    private String name;
 }

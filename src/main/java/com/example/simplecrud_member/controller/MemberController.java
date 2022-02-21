@@ -1,11 +1,10 @@
 package com.example.simplecrud_member.controller;
 
+import com.example.simplecrud_member.model.common.ServiceResponse;
 import com.example.simplecrud_member.model.member.get.GetMemberProfileResponse;
 import com.example.simplecrud_member.model.member.search.SearchMemberProfilesResponse;
-import com.example.simplecrud_member.model.member.shared.MemberProfile;
 import com.example.simplecrud_member.service.MemberService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,23 +25,19 @@ public class MemberController {
      * @return
      */
     @RequestMapping(path = "/{memberId}", method = RequestMethod.GET)
-    public ResponseEntity getMemberProfile(@PathVariable int memberId) {
+    public ServiceResponse<GetMemberProfileResponse> getMemberProfile(@PathVariable int memberId) {
         //validate
         if (memberId <= 0){
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            return new ServiceResponse(HttpStatus.BAD_REQUEST);
         }
 
         //
         var memberProfile = this.memberService.getMemberProfileById(memberId);
         if (memberProfile == null) {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return new ServiceResponse(HttpStatus.NOT_FOUND);
         }
 
-        //wrapping
-        var body = new GetMemberProfileResponse();
-        body.setMemberProfile(memberProfile);
-
-        return new ResponseEntity(body, HttpStatus.OK);
+        return new ServiceResponse(HttpStatus.OK, memberProfile);
     }
 
     /**
@@ -50,25 +45,21 @@ public class MemberController {
      * @return
      */
     @RequestMapping(path = "/search", method = RequestMethod.GET)
-    public ResponseEntity getMemberProfiles(@RequestParam(value = "memberIds") List<Integer> memberIds) {
+    public ServiceResponse<SearchMemberProfilesResponse> getMemberProfiles(@RequestParam(value = "memberIds") List<Integer> memberIds) {
         //validate
         if (memberIds == null) {
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            return new ServiceResponse(HttpStatus.BAD_REQUEST);
         }
         if (memberIds.size() == 0) {
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            return new ServiceResponse(HttpStatus.BAD_REQUEST);
         }
 
         //
         var memberProfiles = this.memberService.getMemberProfileByIds(memberIds);
         if (memberProfiles == null) {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return new ServiceResponse(HttpStatus.NOT_FOUND);
         }
 
-        //wrapping
-        var body = new SearchMemberProfilesResponse();
-        body.setMemberProfiles(memberProfiles);
-
-        return new ResponseEntity(body, HttpStatus.OK);
+        return new ServiceResponse(HttpStatus.OK, memberProfiles);
     }
 }
