@@ -6,6 +6,11 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ *
+ * @see com.example.simplecrud_member.controller.MemberController
+ * @see com.example.simplecrud_member.model.member.service.search.SearchMemberProfilesRequest
+ */
 public class SearchMemberProfilesResponse {
 
     @Getter
