@@ -26,7 +26,7 @@ public class MemberController {
      * @return
      */
     @RequestMapping(path = "", method = RequestMethod.GET)
-    public ServiceResponse<GetMemberProfileResponse> getMemberProfile(GetMemberProfileRequest request) throws InvalidRequestModelException {
+    public ServiceResponse<GetMemberProfileResponse> getMemberProfile(GetMemberProfileRequest request) throws Exception {
         //validate
         request.validate();
 
@@ -48,7 +48,7 @@ public class MemberController {
      * @return
      */
     @RequestMapping(path = "/search", method = RequestMethod.GET)
-    public ServiceResponse<SearchMemberProfilesResponse> getMemberProfiles(SearchMemberProfilesRequest request) throws InvalidRequestModelException {
+    public ServiceResponse<SearchMemberProfilesResponse> getMemberProfiles(SearchMemberProfilesRequest request) throws Exception {
         //validate
         request.validate();
 
