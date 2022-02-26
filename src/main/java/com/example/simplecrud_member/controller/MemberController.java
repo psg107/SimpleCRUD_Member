@@ -1,8 +1,8 @@
 package com.example.simplecrud_member.controller;
 
 import com.example.simplecrud_member.model.common.ServiceResponse;
-import com.example.simplecrud_member.model.member.get.GetMemberProfileResponse;
-import com.example.simplecrud_member.model.member.search.SearchMemberProfilesResponse;
+import com.example.simplecrud_member.model.member.service.get.GetMemberProfileResponse;
+import com.example.simplecrud_member.model.member.service.search.SearchMemberProfilesResponse;
 import com.example.simplecrud_member.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
 package com.example.simplecrud_member.mapper;
 
-import com.example.simplecrud_member.model.member.shared.MemberProfile;
+import com.example.simplecrud_member.model.member.common.MemberProfile;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package com.example.simplecrud_member.service;
 
-import com.example.simplecrud_member.model.member.shared.MemberProfile;
+import com.example.simplecrud_member.model.member.common.MemberProfile;
 import com.example.simplecrud_member.repository.MemberRepository;
 import org.springframework.stereotype.Component;
 

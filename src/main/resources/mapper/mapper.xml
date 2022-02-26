@@ -3,7 +3,7 @@
 <mapper namespace="com.example.simplecrud_member.mapper.IMemberMapper">
 
     <!--사용자 정보 조회-->
-    <select id="getMemberProfile" parameterType="Integer" resultType="com.example.simplecrud_member.model.member.shared.MemberProfile">
+    <select id="getMemberProfile" parameterType="Integer" resultType="com.example.simplecrud_member.model.member.common.MemberProfile">
         SELECT
             MemberId,
             Name
@@ -14,7 +14,7 @@
     </select>
 
     <!--사용자 정보 조회-->
-    <select id="getMemberProfiles" parameterType="java.util.List" resultType="com.example.simplecrud_member.model.member.shared.MemberProfile">
+    <select id="getMemberProfiles" parameterType="java.util.List" resultType="com.example.simplecrud_member.model.member.common.MemberProfile">
         SELECT
             MemberId,
             Name

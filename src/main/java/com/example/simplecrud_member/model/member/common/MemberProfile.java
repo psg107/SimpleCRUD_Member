@@ -1,4 +1,4 @@
-package com.example.simplecrud_member.model.member.shared;
+package com.example.simplecrud_member.model.member.common;
 
 import lombok.Getter;
 import lombok.Setter;

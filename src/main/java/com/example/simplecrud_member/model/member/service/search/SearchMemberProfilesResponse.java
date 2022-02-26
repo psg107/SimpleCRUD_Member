@@ -1,6 +1,6 @@
-package com.example.simplecrud_member.model.member.search;
+package com.example.simplecrud_member.model.member.service.search;
 
-import com.example.simplecrud_member.model.member.shared.MemberProfile;
+import com.example.simplecrud_member.model.member.common.MemberProfile;
 import lombok.Getter;
 import lombok.Setter;
 

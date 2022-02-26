@@ -1,4 +1,4 @@
-package com.example.simplecrud_member.model.member.search;
+package com.example.simplecrud_member.model.member.service.search;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,7 +1,7 @@
 package com.example.simplecrud_member.repository;
 
 import com.example.simplecrud_member.mapper.IMemberMapper;
-import com.example.simplecrud_member.model.member.shared.MemberProfile;
+import com.example.simplecrud_member.model.member.common.MemberProfile;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
