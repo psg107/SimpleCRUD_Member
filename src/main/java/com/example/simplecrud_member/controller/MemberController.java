@@ -26,27 +26,21 @@ public class MemberController {
      * @return
      */
     @RequestMapping(path = "", method = RequestMethod.GET)
-    public ServiceResponse<GetMemberProfileResponse> getMemberProfile(GetMemberProfileRequest request) {
-        try{
-            //validate
-            request.validate();
+    public ServiceResponse<GetMemberProfileResponse> getMemberProfile(GetMemberProfileRequest request) throws InvalidRequestModelException {
+        //validate
+        request.validate();
 
-            //model parameter
-            var memberId = request.getMemberId();
+        //model parameter
+        var memberId = request.getMemberId();
 
-            //service
-            var memberProfile = this.memberService.getMemberProfileById(memberId);
-            if (memberProfile == null) {
-                return new ServiceResponse(HttpStatus.NOT_FOUND);
-            }
-
-            //return
-            return new ServiceResponse(HttpStatus.OK, memberProfile);
-        } catch (InvalidRequestModelException ex) {
-            return new ServiceResponse(HttpStatus.BAD_REQUEST, ex.getMessage());
-        } catch (Exception ex) {
-            return new ServiceResponse(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
+        //service
+        var memberProfile = this.memberService.getMemberProfileById(memberId);
+        if (memberProfile == null) {
+            return new ServiceResponse(HttpStatus.NOT_FOUND);
         }
+
+        //return
+        return new ServiceResponse(HttpStatus.OK, memberProfile);
     }
 
     /**
@@ -54,26 +48,20 @@ public class MemberController {
      * @return
      */
     @RequestMapping(path = "/search", method = RequestMethod.GET)
-    public ServiceResponse<SearchMemberProfilesResponse> getMemberProfiles(SearchMemberProfilesRequest request) {
-        try {
-            //validate
-            request.validate();
+    public ServiceResponse<SearchMemberProfilesResponse> getMemberProfiles(SearchMemberProfilesRequest request) throws InvalidRequestModelException {
+        //validate
+        request.validate();
 
-            //model parameter
-            var memberIds = request.getMemberIds();
+        //model parameter
+        var memberIds = request.getMemberIds();
 
-            //service
-            var memberProfiles = this.memberService.getMemberProfileByIds(memberIds);
-            if (memberProfiles == null) {
-                return new ServiceResponse(HttpStatus.NOT_FOUND);
-            }
-
-            //return
-            return new ServiceResponse(HttpStatus.OK, memberProfiles);
-        } catch (InvalidRequestModelException ex) {
-            return new ServiceResponse(HttpStatus.BAD_REQUEST, ex.getMessage());
-        } catch (Exception ex) {
-            return new ServiceResponse(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
+        //service
+        var memberProfiles = this.memberService.getMemberProfileByIds(memberIds);
+        if (memberProfiles == null) {
+            return new ServiceResponse(HttpStatus.NOT_FOUND);
         }
+
+        //return
+        return new ServiceResponse(HttpStatus.OK, memberProfiles);
     }
 }
